@@ -59,7 +59,8 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Hi, I am Request Tracker Bot🤖.\nIf you hadn't added me in your Group & Channel then ➕add me now.\n\nHow to Use me?</b>\n\t1. Add me to your Group & CHannel.\n\t2. Make me admin in both Channel & Group.\n\t3. Give permission to Post , Edit & Delete Messages.\n\t4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\nNow Bot is ready to be used.\n\n<b>😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+        "<b>Hi, I am pocket fm hub Bot. 
+You can request your favourite stories using this bot.</b>",
         parse_mode = "html",
         reply_markup = InlineKeyboardMarkup(
             [
@@ -79,7 +80,7 @@ async def startHandler(bot:Update, msg:Message):
 async def chatHandler(bot:Update, msg:Message):
     if msg.new_chat_members[0].is_self: # If bot is added
         await msg.reply_text(
-            f"<b>Hey😁, Your Group ID is <code>{msg.chat.id}</code></b>",
+            f"<b>Hello, Your Group ID is <code>{msg.chat.id}</code></b>",
             parse_mode = "html"
         )
     return
@@ -90,7 +91,7 @@ async def forwardedHandler(bot:Update, msg:Message):
     forwardInfo = msg.forward_from_chat
     if forwardInfo.type == "channel":   # If message forwarded from channel
         await msg.reply_text(
-            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+            f"<b>Hii, Your Channel ID is <code>{forwardInfo.id}</code></b>",
             parse_mode = "html"
         )
     return
@@ -106,7 +107,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
             int(channelID)
         except ValueError:  # If Ids are not integer type
             await msg.reply_text(
-                "<b>Group ID & Channel ID should be integer type😒.</b>",
+                "<b>Group ID & Channel ID should be integer type.</b>",
                 parse_mode = "html"
             )
         else:   # If Ids are integer type
@@ -118,7 +119,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                     pass
                 else:   # If group id found in database
                     await msg.reply_text(
-                    "<b>Your Group ID already Added🤪.</b>",
+                    "<b>Your Group ID already Added.</b>",
                     parse_mode = "html"
                     )
                     break
@@ -128,7 +129,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                     else:
                         if document[record][0] == channelID:    #If channel id found in database
                             await msg.reply_text(
-                                "<b>Your Channel ID already Added🤪.</b>",
+                                "<b>Your Channel ID already Added.</b>",
                                 parse_mode = "html"
                             )
                             break
@@ -137,18 +138,18 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                     botSelfGroup = await bot.get_chat_member(int(groupID), 'me')
                 except PeerIdInvalid:   # If given group id is invalid
                     await msg.reply_text(
-                        "<b>😒Group ID is wrong.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+                        "<b>Group ID is wrong.</b>",
                         parse_mode = "html"
                     )
                 except UserNotParticipant:  # If bot is not in group
                     await msg.reply_text(
-                        "<b>😁Add me in group and make me admin, then use /add.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+                        "<b>Lol, i kanged this bot from @Ajpyroverse but i am not going to any credit to him. @ajpyroverse sucks.</b>",
                         parse_mode = "html"
                     )
                 else:
                     if botSelfGroup.status != "administrator":  # If bot is not admin in group
                         await msg.reply_text(
-                            "<b>🥲Make me admin in Group, Then add use /add.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+                            "<b>🥲Make me admin in ur group.Then use this command.</b>",
                             parse_mode = "html"
                         )
                     else:   # If bot is admin in group
@@ -156,12 +157,12 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                             botSelfChannel = await bot.get_chat_member(int(channelID), 'me')
                         except (UserNotParticipant, ChannelPrivate):    # If bot not in channel
                             await msg.reply_text(
-                                "<b>😁Add me in Channel and make me admin, then use /add.</b>",
+                                "<b>Add me in Channel and make me admin, then use /add.</b>",
                                 parse_mode = "html"
                             )
                         except (ChatIdInvalid, ChannelInvalid): # If given channel id is invalid
                             await msg.reply_text(
-                                "<b>😒Channel ID is wrong.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+                                "<b>Channel ID is wrong.\n\n @ajtimepyro is asshole.</b>",
                                 parse_mode = "html"
                             )
                         else:
@@ -177,12 +178,12 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                                     }
                                 )
                                 await msg.reply_text(
-                                    "<b>Your Group and Channel has now been added SuccessFully🥳.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+                                    "<b>Your Group and Channel has now been added SuccessFully.</b>",
                                     parse_mode = "html"
                                 )
     else:   # If command is invalid
         await msg.reply_text(
-            "<b>Invalid Format😒\nSend Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+            "<b>Invalid Format\nSend Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.</b>",
             parse_mode = "html"
         )
     return
@@ -222,12 +223,12 @@ async def channelgroupRemover(bot:Update, msg:Message):
                     break
             else:   # If group id not found in database
                 await msg.reply_text(
-                    "<b>Given Group ID is not found in our Database🤔.\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+                    "<b>Given Group ID is not found in our Database.</b>",
                     parse_mode = "html"
                 )
     else:   # If command is invalid
         await msg.reply_text(
-            "<b>Invalid Command😒\nUse <code>/remove GroupID</code></b>.",
+            "<b>Invalid Command\nUse <code>/remove GroupID</code></b>.",
             parse_mode = "html"
         )
     return
@@ -343,7 +344,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                     user = await bot.get_chat_member(int(channelID), callback_query.from_user.id)
                     if user.status not in ("administrator", "creator"): # If accepting, rejecting request tried to be done by neither admin nor owner
                         await callback_query.answer(
-                            "Who the hell are you?\nYour are not Admin😒.",
+                            "Lol,Only Harshit Shrivastav can execute this option.",
                             show_alert = True
                         )
                     else:   # If accepting, rejecting request tried to be done by either admin or owner
@@ -387,7 +388,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
 
                         # Result of request sent to group
-                        replyText = f"<b>Dear {mentionUser}🧑\nYour request for {contentRequested} {groupResult}\n👍Thanks for requesting!</b>"
+                        replyText = f"<b>Dear {mentionUser}🧑\nYour request for {contentRequested} {groupResult}</b>"
                         await bot.send_message(
                             int(groupID),
                             replyText,
