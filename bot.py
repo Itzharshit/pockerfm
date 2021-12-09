@@ -59,8 +59,7 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Hi, I am pocket fm hub Bot. 
-You can request your favourite stories using this bot.</b>",
+        "Hi, I am pocket fm hub Bot. You can request your favourite stories using this bot.",
         parse_mode = "html",
         reply_markup = InlineKeyboardMarkup(
             [
